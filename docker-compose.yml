@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  productos-db:
+    image: mysql
+    container_name: productos-db
+    environment:
+      MYSQL_DATABASE: productos_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: productos
+      MYSQL_PASSWORD: productos
+    ports:
+      - "3307:3306" # Acceso desde host: localhost:3307
+    volumes:
+      - productos_data:/var/lib/mysql
+    networks:
+      - backend
+
+  inventario-db:
+    image: mysql
+    container_name: inventario-db
+    environment:
+      MYSQL_DATABASE: inventario_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: inventario
+      MYSQL_PASSWORD: inventario
+    ports:
+      - "3308:3306" # Acceso desde host: localhost:3308
+    volumes:
+      - inventario_data:/var/lib/mysql
+    networks:
+      - backend
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - backend
+
+volumes:
+  productos_data:
+  inventario_data:
+
+networks:
+  backend:
+    driver: bridge
