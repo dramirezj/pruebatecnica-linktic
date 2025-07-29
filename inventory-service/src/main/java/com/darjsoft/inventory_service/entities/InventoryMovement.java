@@ -1,6 +1,5 @@
 package com.darjsoft.inventory_service.entities;
 
-
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -19,15 +18,15 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "stockInventory")
+@Table(name = "inventoryMovement")
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class StockInventoryEntity {
-
+public class InventoryMovement {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -35,6 +34,8 @@ public class StockInventoryEntity {
 	private Long productId;
 	@Column(name = "quantity")
 	private Long quantity;
+	@Column(name = "movementType")
+	private String movementType;
 	@Column(name = "createAt")
 	private LocalDate createAt;
 
@@ -50,5 +51,5 @@ public class StockInventoryEntity {
 	private void updateAt() {
 		this.updateAt = LocalDate.now();
 	}
-	
+
 }

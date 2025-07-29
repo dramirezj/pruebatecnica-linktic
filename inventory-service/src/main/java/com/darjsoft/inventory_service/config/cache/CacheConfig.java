@@ -12,7 +12,7 @@ public class CacheConfig {
 
 	@Bean
 	CacheManager cacheManager() {
-		return new ConcurrentMapCacheManager(CacheConstants.TICKETS_CACHE, CacheConstants.USERS_CACHE);
+		return new ConcurrentMapCacheManager(CacheConstants.INVENTORY_CACHE);
 	}
 
 }
