@@ -14,7 +14,7 @@ import lombok.Setter;
 @JsonInclude(Include.NON_NULL)
 @Getter
 @Setter
-public class PoductDTO {
+public class ProductDTO {
 	
 	private Long id;
 	@JsonProperty(value = "Nombre")
